@@ -1,0 +1,25 @@
+
+# Usage: this file must be sourced from ROOTDIR
+#
+# Expected directory layout
+# ROOTDIR/
+#     meta-minimal/env
+#     poky/
+#     build/ (generated)
+#
+
+if [ -n "$BASH_SOURCE" ]; then THIS_SCRIPT=$BASH_SOURCE
+elif [ -n "$ZSH_NAME" ];  then THIS_SCRIPT=$0
+else
+    echo Please use BASH or ZSH. Abort.
+    return 1
+fi
+
+export ROOTDIR=$PWD
+export TEMPLATECONF=$(realpath $(dirname "$THIS_SCRIPT")/templateconf)
+
+. poky/oe-init-build-env build
+
+export BB_ENV_EXTRAWHITE="${BB_ENV_EXTRAWHITE} ROOTDIR"
+export PS1="(bb)$PS1"
+

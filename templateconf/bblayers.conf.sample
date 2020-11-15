@@ -1,0 +1,8 @@
+POKY_BBLAYERS_CONF_VERSION = "2"
+
+BBLAYERS ?= " \
+  ${ROOTDIR}/meta-minimal \
+  ${ROOTDIR}/poky/meta \
+  ${ROOTDIR}/poky/meta-poky \
+  ${ROOTDIR}/poky/meta-yocto-bsp \
+"
